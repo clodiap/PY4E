@@ -5,16 +5,16 @@ import xml.etree.ElementTree as ET
 data = urllib.request.urlopen("http://py4e-data.dr-chuck.net/comments_42.xml")
 
 tree = ET.parse(data)
-print(tree)
-
-counts = tree.findall('.//name')
-print("counts ", counts)
-
-
 root = tree.getroot()
-print(root)
 
-for child in root:
-    print(child.tag, child.attrib)
+lst = root.findall("comments/comment")
+print(lst)
+
+listofcount = list()
+for item in lst:
+
+  print("count", item.find('count').text)
+
+
 
 
