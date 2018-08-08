@@ -1,11 +1,9 @@
 import urllib.request, urllib.parse, urllib.error
 import xml.etree.ElementTree as ET
 
-# url de test
-urlinput = "https://slashdot.org/slashdot.xml"
-# urlinput = "https://foudechats.fr/feed/"
-
-# urlinput = input("Enter rss feed (xml format): ")
+urlinput = input("Enter rss feed (xml format): ")
+if urlinput =="" :
+  urlinput = "https://slashdot.org/slashdot.xml"
 data = urllib.request.urlopen(urlinput)
 print("Retrieving ", urlinput)
 
