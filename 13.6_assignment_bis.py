@@ -1,10 +1,13 @@
 import urllib.request, urllib.parse, urllib.error
 import xml.etree.ElementTree as ET
 
-# url de test
-# urlinput = "http://py4e-data.dr-chuck.net/comments_42.xml"
+# avec utilisation de XPath
 
-urlinput = input("Enter location: ")
+
+# url de test
+urlinput = "http://py4e-data.dr-chuck.net/comments_42.xml"
+
+# urlinput = input("Enter location: ")
 data = urllib.request.urlopen(urlinput)
 print("Retrieving ", urlinput)
 
@@ -16,14 +19,12 @@ print('Retrieved', len(comptage), 'characters')
 tree = ET.parse(data)
 root = tree.getroot()
 
-# on récupère l'intérieur des tags comments/comment
-lst = root.findall("comments/comment")
-# print(lst)
+counts = root.findall('.//count')
 
 # Création d'une liste puis d'une boucle qui récupère les valeurs des tags count
 listofcount = list()
-for item in lst:
-  nombre = item.find('count').text
+for item in counts:
+  nombre = item.text
   # print(nombre)
   inombre = int(nombre)
   listofcount.append(inombre)
